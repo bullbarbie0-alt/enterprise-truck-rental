@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary: #008542;
+    --primary-dark: #006b36;
+    --primary-light: #e8f5e9;
+    --dark: #1a1a2e;
+    --dark-light: #2d2d44;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background: #f5f5f5;
+}
+
+@layer components {
+    .btn {
+        @apply px-5 py-2.5 rounded-lg font-semibold text-sm transition-all cursor-pointer inline-flex items-center gap-1.5 border-none;
+    }
+    .btn-primary {
+        @apply bg-primary text-white hover:bg-primary-dark;
+    }
+    .btn-outline {
+        @apply bg-transparent border-2 border-primary text-primary hover:bg-primary-light;
+    }
+    .btn-danger {
+        @apply bg-red-500 text-white hover:bg-red-600;
+    }
+    .btn-success {
+        @apply bg-green-500 text-white hover:bg-green-600;
+    }
+    .card {
+        @apply bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden transition-all;
+    }
+    .card-hover:hover {
+        @apply shadow-lg -translate-y-1;
+    }
+    .input {
+        @apply w-full px-4 py-3 border-2 border-gray-200 rounded-lg text-sm transition-all focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10;
+    }
+    .label {
+        @apply block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+.animate-slide-in {
+    animation: slideIn 0.4s ease forwards;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #999; }
+
+/* Print styles for receipts */
+@media print {
+    .no-print { display: none !important; }
+    .print-only { display: block !important; }
+}
